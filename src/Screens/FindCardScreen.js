@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OneCard from "../components/OneCard";
 import { listCard } from "../actions/cardAction";
 import Loading from "../components/Loading";
-import {  useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import Message from "../components/Message";
 function FindCardScreen() {
   const dispatch = useDispatch(); //backend
