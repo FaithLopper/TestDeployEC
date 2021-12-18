@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col, Alert } from 'react-bootstrap'
-import { useLocation } from 'react-router'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Loader from '../../components/Loader'
 import { submitPayment } from '../../actions/userActions'
 import { ArrowBarRight } from 'react-bootstrap-icons'
@@ -22,7 +21,7 @@ const SubChargeScreen = () => {
 
     const userSubPayment = useSelector(state => state.userSubPayment)
     const { loading, errorRes, successRes } = userSubPayment
-    
+
     useEffect(() => {
         if (!userInfo || !paymentId || !token || !PayerID) {
             navigate('/login')

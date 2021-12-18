@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from 'react-bootstrap'
-import { useLocation } from 'react-router'
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { detailCard } from "../actions/cardAction"
 
 import $ from "jquery";

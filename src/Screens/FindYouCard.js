@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLocation } from 'react-router'
+import { useLocation } from "react-router-dom"
 import { listCard } from "../actions/cardAction";
 import { Row, Col, Container, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
