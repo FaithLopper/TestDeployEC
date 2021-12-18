@@ -32,11 +32,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm install"
+    "heroku-postbuild": "npm --max_old_space_size=4096 install && npm audit fix"
   },
   "eslintConfig": {
     "extends": [
