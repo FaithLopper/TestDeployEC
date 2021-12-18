@@ -1,0 +1,14 @@
+//update password trả về object nhưng lại dùng map
+//logic useeffect trong profile co the bi bug
+
+withdraw test case email null
+
+//withdraw nhập quá số dư trả ko đúng lỗi, lỗi internal
+
+credit thoi gian tra, ngay thang sau ngay den hang bat dau tinh, phi lam lai the, phi chuyen tien
+debit 
+domdebit loi toan bo chi tiet
+
+
+
+login tra ve email, name, token thoi
