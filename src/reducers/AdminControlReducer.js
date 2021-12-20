@@ -50,6 +50,15 @@ export const adminCardCreate = (state = {}, action) => {
     }
 }
 
+export const adminCardNew = (state = {}, action) => {
+    switch (action.type) {
+        case ADMIN_CONSTANTS.ADMIN_CARD_NEW_REQUEST: return { loading: true }
+        case ADMIN_CONSTANTS.ADMIN_CARD_NEW_SUCCESS: return { loading: false, notiCardNew: action.payload,errorCardNew:null }
+        case ADMIN_CONSTANTS.ADMIN_CARD_NEW_FAIL: return { loading: false, errorCardNew: action.payload,notiCardNew:null }
+        default: return state
+    }
+}
+
 export const adminCardView = (state = {}, action) => {
     switch (action.type) {
         case ADMIN_CONSTANTS.ADMIN_CARD_VIEW_REQUEST: return { loading: true }

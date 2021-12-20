@@ -29,11 +29,12 @@ function AdminCardCreate() {
 
   const [open, setOpen] = React.useState(false);
   const [type, setType] = useState("intCredits");
+  
   const [card, setCard] = useState({
     cardName: null,
     image: null,
     isIssuing: true,
-    cardRank: null,
+    cardRank: "Gold",
     publisher:null,
     description: null,
     creditLine: null,
@@ -55,11 +56,12 @@ function AdminCardCreate() {
   useEffect(() => {
     if (adminInfo) {
       if (Object.keys(adminInfo).length === 0) {
-        console.log(adminInfo);
+      
         navigate("/admin");
       }
     }
-  }, [adminInfo, navigate]);
+    // eslint-disable-next-line
+  }, [adminInfo]);
   useEffect(() => {
     if (notiCard) {
       setOpen(true);
@@ -71,8 +73,7 @@ function AdminCardCreate() {
     window.location.reload(false);
   };
   function sendHandler() {
-    console.log(card);
-    console.log(type);
+    
     if (type !== "" && card) {
       dispatch(createCard(type, card));
     }
@@ -111,6 +112,7 @@ function AdminCardCreate() {
                 Loại thẻ
               </InputLabel>
               <Select
+              defaultValue={"intCredits"}
                 labelId="demo-simple-select-filled-label"
                 id="demo-simple-select-filled"
                 onChange={(e) => {
@@ -316,6 +318,7 @@ function AdminCardCreate() {
                       Hạng thẻ
                     </InputLabel>
                     <Select
+                      defaultValue="Gold"
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       onChange={(e) => {

@@ -3,12 +3,12 @@ import {
   CARD_LIST_SUCCESS,
   CARD_LIST_REQUEST,
 } from "../constants/cardConstant";
-import {CARD_DETAIL_FAIL,CARD_DETAIL_SUCCESS,CARD_DETAIL_REQUEST} from '../constants/cardConstant'
+import { CARD_DETAIL_FAIL, CARD_DETAIL_SUCCESS, CARD_DETAIL_REQUEST } from '../constants/cardConstant'
 import axios from "axios";
 import feEnv from "../config/envfile";
 
 export const listCard = () => async (dispatch) => {
-  
+
   try {
     dispatch({ type: CARD_LIST_REQUEST });
     const { data } = await axios.get(`${feEnv.HOST}/v1/card-type/cards`);
@@ -28,7 +28,7 @@ export const listCard = () => async (dispatch) => {
 };
 
 
-export const detailCard = (cardType,cardUrl) => async (dispatch) => {
+export const detailCard = (cardType, cardUrl) => async (dispatch) => {
   try {
     dispatch({ type: CARD_DETAIL_REQUEST });
     const { data } = await axios.get(`${feEnv.HOST}/v1/card-type/${cardType}/${cardUrl}`);
@@ -36,6 +36,7 @@ export const detailCard = (cardType,cardUrl) => async (dispatch) => {
       type: CARD_DETAIL_SUCCESS,
       payload: data,
     });
+    return data
   } catch (error) {
     dispatch({
       type: CARD_DETAIL_FAIL,

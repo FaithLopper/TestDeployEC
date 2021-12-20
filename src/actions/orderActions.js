@@ -43,11 +43,10 @@ export const initOrder = (order) => async (dispatch, getState) => {
         }
         else if (order.orderType === 'paymentgateway-cancel') {
             body = {
-                cardId: order.cardId,
-                gateId: order.gateId
+                gateId: order.gateId,
+                cusCmt: order.cusCmt
             }
         }
-
         const { data } = await axios.post(`${feEnv.HOST}/v1/order/${order.orderType}`, body, config)
 
         dispatch({

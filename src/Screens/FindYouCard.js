@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLocation } from "react-router-dom"
+import { useLocation } from 'react-router-dom'
 import { listCard } from "../actions/cardAction";
 import { Row, Col, Container, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +38,6 @@ const FindYouCard = () => {
         });
     }
 
-    console.log(yourCards)
     return (
         <Container className="my-4">
             <Row className="card-item">

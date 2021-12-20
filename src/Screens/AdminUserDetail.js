@@ -41,11 +41,12 @@ function AdminUserDetail() {
     useEffect(()=>{
       if(adminInfo){
         if(Object.keys(adminInfo).length===0){
-          console.log(adminInfo)
+          
           navigate('/admin')
         } 
       }
-  },[adminInfo,navigate])
+  // eslint-disable-next-line
+  },[adminInfo])
     useEffect(()=>{
       dispatch(getDetailUserInfo(id))
       
@@ -78,9 +79,8 @@ function AdminUserDetail() {
           
         })
 
-        console.log(user)
-      }
-    },[userDetail,user])
+          }
+    },[userDetail])
     const {noti}=useSelector(state=>state.notiUser)
     useEffect(()=>{
       if(noti){
@@ -99,8 +99,7 @@ function AdminUserDetail() {
         ...user,
         isActive:e.target.checked
       })
-      console.log(user)
-    }
+      }
     function maleHandler(e){
         setUser({
           ...user,
@@ -286,10 +285,7 @@ function AdminUserDetail() {
                         </div>
                         
                      
-                                                  
-                        <Button variant="contained"  style={{margin:"15px 0 0 5px"}} onClick={sendHandler}>
-                          Gửi
-                        </Button>
+                      
                       </Box>
 
                                     <Box
@@ -414,8 +410,13 @@ function AdminUserDetail() {
                                       <Button variant="contained" style={{margin:"15px 0 0 5px"}} onClick={clickHandler}>
                           Lịch sử giao dịch
                         </Button>
+                        
                                           </div>
-                                    </Box></> 
+                                    </Box>
+                                                                
+                        <Button variant="contained" color="success"  style={{margin:"15px 0 0 5px"}} onClick={sendHandler}>
+                          Gửi
+                        </Button></> 
                       ) : <Loader />}
                 
             </Container>

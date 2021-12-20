@@ -62,8 +62,15 @@ function AdminOrderDetail() {
     },[adminOrderDeny])
     
     const approveHandler=()=>{
+
+     
       if(adminOrderDetail){
-        dispatch(approveOrder(adminOrderDetail._id,detail.bankCmt))
+
+        if(detail.bankCmt==='' || detail.bankCmt===null){
+          setOpen(true)
+          setMessage('Lời nhắn ngân hàng không được bỏ trống!!!')
+        }else
+          dispatch(approveOrder(adminOrderDetail._id,detail.bankCmt))
         
       }
      
@@ -177,8 +184,8 @@ function AdminOrderDetail() {
                             label="Lời nhắn ngân hàng"
                             defaultValue={adminOrderDetail.bankCmt}
                             onChange={handler}
-                            
-                            
+                            color="warning"
+                            focused
                             variant="standard"
                           />
                           <TextField

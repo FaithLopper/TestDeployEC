@@ -68,7 +68,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         dispatch({
             type: ADMIN_CONSTANTS.ADMIN_PUT_REQUEST
         })
-        console.log(user);
+    
         const { adminLogin: { adminInfo } } = getState()
 
         const config = {
@@ -179,7 +179,7 @@ export const createCard = (type,card) => async (dispatch, getState) => {
             break
             default: return card
         }
-        console.log(card)
+    
       
 
         dispatch({
@@ -195,7 +195,7 @@ export const createCard = (type,card) => async (dispatch, getState) => {
                 Authorization: `Bearer ${adminInfo.token}`
             }
         }
-      
+     
         const { data } = await axios.post(`${feEnv.HOST}/v2/card-type/${type}`,card,config)
 
         dispatch({
@@ -435,6 +435,40 @@ export const denyOrder = (id,cmt) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: ADMIN_CONSTANTS.ADMIN_ORDER_DENY_FAIL,
+            payload: error.response.data
+        })
+    }
+}
+
+
+export const newCard = (type,id,card) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: ADMIN_CONSTANTS.ADMIN_CARD_NEW_REQUEST
+        })
+        console.log(id)
+        console.log(type)
+        console.log(card)
+
+        const { adminLogin: { adminInfo } } = getState()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${adminInfo.token}`
+            }
+        }
+      
+        const { data } = await axios.post(`${feEnv.HOST}/v2/card-type/${type}/new?cardTypeId=${id}`,card,config)
+
+        dispatch({
+            type: ADMIN_CONSTANTS.ADMIN_CARD_NEW_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_CONSTANTS.ADMIN_CARD_NEW_FAIL,
             payload: error.response.data
         })
     }

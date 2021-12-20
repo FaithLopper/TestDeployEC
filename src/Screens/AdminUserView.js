@@ -147,7 +147,7 @@ function AdminUserView() {
   }
   
   const searchHandler=(e)=>{
-      setKey(e.target.value)
+     
       if (!e) e = window.event;
       var keyCode = e.code || e.key;
       if (keyCode === 'Enter'){
@@ -155,10 +155,19 @@ function AdminUserView() {
           dispatch(getSearchlUserInfo(prop,key))
       }
       }
+     
       
   }
   const selectHandler=(e)=>{  
         setProp(e.target.value)
+        if(e.target.value==='All'){
+          dispatch(getAllUserInfo(page));
+        }
+  }
+  function emptyHandler(e){
+    if(e.target.value===''){
+      dispatch(getAllUserInfo(page))
+    }
   }
   return (
     <>
@@ -176,6 +185,9 @@ function AdminUserView() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               onKeyPress={searchHandler}
+              onKeyUp={emptyHandler}
+              onChange={(e)=>{ setKey(e.target.value)}}
+              value={key}
             />
 
 <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -183,11 +195,11 @@ function AdminUserView() {
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          // value={}
+          defaultValue={"name"}
           onChange={selectHandler}
           label="Thuộc tính"
         >
-         
+          
           <MenuItem value="name">Tên</MenuItem>
           <MenuItem value="phoneNumber">Số điện thoại</MenuItem>
           <MenuItem value="email">Email</MenuItem>

@@ -4,8 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { cardListReducer, cardDetailReducer } from "./reducers/cardReducers"
 import { userLoginReducer, userRegisterReducer, userProfileReducer, userUpdatePassReducer, userGetPaymentReducer, userSubPaymentReducer, user_DT_Reducer, userForgotPassReducer } from "./reducers/userReducers"
 import { initializeOrderReducer } from "./reducers/orderReducers"
+import {getAllTransaction,getDetailTransaction,getAllCard,deactiveCard,activeCard,getAllPaymentgate} from "./reducers/managermentReducer"
 import { adminLoginReducer, adminProfileReducer, adminUpdateReducer, adminPasswordReducer } from "./reducers/AdminAuthReducer"
-import { adminControlUser, adminControlUserDetail, adminControlUserTransaction, adminOrderDetail, adminControlUserUpdate, adminCardCreate, adminCardView, adminCardSearch, adminCardUpdate, adminOrderAll, adminOrderApprove, adminOrderDeny } from "./reducers/AdminControlReducer"
+import { adminControlUser, adminControlUserDetail, adminControlUserTransaction, adminOrderDetail, adminControlUserUpdate, adminCardCreate, adminCardView, adminCardSearch, adminCardUpdate, adminOrderAll, adminOrderApprove, adminOrderDeny ,adminCardNew} from "./reducers/AdminControlReducer"
 
 const reducer = combineReducers({
   cardList: cardListReducer,
@@ -35,7 +36,13 @@ const reducer = combineReducers({
   adminOrderDetail: adminOrderDetail,
   adminOrderApprove: adminOrderApprove,
   adminOrderDeny: adminOrderDeny,
-
+  listTransaction:getAllTransaction,
+  detailTransaction:getDetailTransaction,
+  getAllCard:getAllCard,
+  deactiveCard:deactiveCard,
+  activeCard:activeCard,
+  getAllPaymentgate:getAllPaymentgate,
+  adminCardNew:adminCardNew,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

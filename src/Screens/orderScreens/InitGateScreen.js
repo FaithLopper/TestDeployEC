@@ -7,6 +7,7 @@ import feEnv from "../../config/envfile"
 import Loader from "../../components/Loader";
 import { getUserProfile, logout } from '../../actions/userActions';
 import { initOrder } from '../../actions/orderActions';
+import { InfoUserOrder } from '../../components/InfoUserOrder'
 
 const InitGateScreen = () => {
 
@@ -77,29 +78,7 @@ const InitGateScreen = () => {
                     {loading && <Loader />}
                     {initGate && user.name &&
                         < Form onSubmit={submitHandler} className='mt-5' style={{ textAlign: 'center' }} controlId="initgate">
-                            <Col className="mt-3">
-                                <h3 style={{ textAlign: 'center' }}>Thông tin Khách hàng</h3>
-                                <Row>
-                                    <Col>
-                                        <Form.Label>Tên Khách Hàng</Form.Label>
-                                        <Form.Control disabled value={user.name} placeholder="username" />
-                                    </Col>
-                                    <Col>
-                                        <Form.Label>CMND/CCCD</Form.Label>
-                                        <Form.Control disabled value={"*******" + user.personalIdNumber.number.slice(-4)} placeholder="personid" />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control disabled value={user.email.slice(0, 5) + "*******" + user.email.slice(-8)} placeholder="email" />
-                                    </Col>
-                                    <Col>
-                                        <Form.Label>Số tài khoản</Form.Label>
-                                        <Form.Control disabled value={"*******" + user.accNumber.slice(-4)} placeholder="accNumber" />
-                                    </Col>
-                                </Row>
-                            </Col>
+                            {InfoUserOrder(user)}
                             <Col>
                                 <Form.Label>Thu Nhập</Form.Label>
                                 <Form.Control disabled value={user.job.salary} placeholder="salary" />
