@@ -73,7 +73,7 @@ main{
 .main-info{
   display: flex;
   flex-direction: column;
-  justify-items:calc();
+  justify-items:center;
   color : var(--primary-white) !important;
 }
 .main-info h5{
